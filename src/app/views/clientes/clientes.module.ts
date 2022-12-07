@@ -8,7 +8,10 @@ import { ClientesRoutingModule } from './clientes-routing.module';
 import { ClientesComponent } from './clientes/clientes.component';
 import { NewClienteComponent } from './new-cliente/new-cliente.component';
 import { EditClienteComponent } from './edit-cliente/edit-cliente.component';
+import { MaskModule } from 'src/app/shared/mask/mask.module';
+import { NgxMaskModule, IConfig } from 'ngx-mask'
 
+export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
 
 @NgModule({
   declarations: [
@@ -22,7 +25,12 @@ import { EditClienteComponent } from './edit-cliente/edit-cliente.component';
     ComponentsModule,
     MaterialModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MaskModule,
+    NgxMaskModule.forChild()
+
+    
+    
   ]
 })
 export class ClientesModule { }
