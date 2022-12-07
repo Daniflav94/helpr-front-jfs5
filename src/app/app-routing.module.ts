@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AcessoClienteGuard } from './guards/acesso-cliente.guard';
 import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
@@ -14,11 +15,13 @@ const routes: Routes = [
   },
   {
     path: 'clientes',
-    loadChildren: () => import('./views/clientes/clientes.module').then(m => m.ClientesModule)
+    loadChildren: () => import('./views/clientes/clientes.module').then(m => m.ClientesModule),
+    canActivateChild: [ AcessoClienteGuard ]
   },
   {
     path: 'chamados',
-    loadChildren: () => import('./views/chamados/chamados.module').then(m => m.ChamadosModule)
+    loadChildren: () => import('./views/chamados/chamados.module').then(m => m.ChamadosModule),
+    canActivateChild: [ AcessoClienteGuard ]
   }
 ];
 
