@@ -7,13 +7,23 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
-import { NgxMaskModule, IConfig } from 'ngx-mask'
+
+import { CommonModule } from '@angular/common';
+
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { ModalModule } from 'ngx-bootstrap/modal';
+// import { AppBootstrapModule } from './app-bootstrap/app-bootstrap.module';
+
+
+import { NgxMaskModule, IConfig } from 'ngx-mask';
 
 export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
 
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent 
   ],
   imports: [
     BrowserModule,
@@ -21,8 +31,19 @@ export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
     BrowserAnimationsModule,
     HttpClientModule,
     JwtModule,
+
+    CommonModule,
+    BsDropdownModule.forRoot(),
+    TooltipModule.forRoot(),
+    ModalModule.forRoot(),
+    BrowserModule, 
+    // AppBootstrapModule,
+
     NgxMaskModule.forRoot()
+
   ],
+  exports: [BsDropdownModule, TooltipModule, ModalModule],
+
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
@@ -33,3 +54,4 @@ export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+0
