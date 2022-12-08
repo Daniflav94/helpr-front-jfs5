@@ -1,7 +1,12 @@
 <mat-drawer-container autosize>
-
     <mat-drawer #drawer mode="over">
         <mat-nav-list>
+            <div>
+                <img class="perfil"
+                    [src]=" usuario.foto || 'assets/imagem/perfil.jpg' "
+                    alt="foto de perfil" width="180px">
+                <h1 class="usuario"> {{ usuario.nome }} </h1>
+            </div>
             <a mat-list-item routerLink="/home" routerLinkActive="active">
                 <i class="material-icons">home</i>
                 Página principal
@@ -23,11 +28,11 @@
 
     <mat-drawer-content>
         <mat-toolbar color="primary">
-            <button type="button" mat-icon-button (click)="drawer.toggle()">
+            <button type="button" mat-icon-button (click)="drawer.toggle()" >
                 <i class="material-icons">menu</i>
             </button>
         </mat-toolbar>
-        
+
         <div class="container">
             <ng-content></ng-content>
         </div>
