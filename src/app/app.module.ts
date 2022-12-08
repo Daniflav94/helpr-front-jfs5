@@ -7,18 +7,36 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
+import { CommonModule } from '@angular/common';
+
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { ModalModule } from 'ngx-bootstrap/modal';
+// import { AppBootstrapModule } from './app-bootstrap/app-bootstrap.module';
+
+
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    JwtModule
+    JwtModule,
+    CommonModule,
+    BsDropdownModule.forRoot(),
+    TooltipModule.forRoot(),
+    ModalModule.forRoot(),
+    BrowserModule, 
+    // AppBootstrapModule
+    
   ],
+  exports: [BsDropdownModule, TooltipModule, ModalModule],
+
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
@@ -29,3 +47,4 @@ import { JwtModule } from '@auth0/angular-jwt';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+0
