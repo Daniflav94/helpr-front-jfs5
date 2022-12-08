@@ -25,7 +25,13 @@ export class FuncionariosComponent implements OnInit {
   }
 
   public delete(id: number): void{
-
+    let ok = confirm("Tem certeza que deseja excluir?");
+    if(ok) {
+      this.funcionarioService.delete(id).subscribe(resposta  => {
+        alert("Funcionário excluído.")
+        this.initializeTable()
+      })
+    }
   }
 
 }

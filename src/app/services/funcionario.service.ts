@@ -28,15 +28,26 @@ export class FuncionarioService {
       email: funcionario.email,
       cpf: funcionario.cpf,
       senha: funcionario.senha,
-      telefone: funcionario.telefone,
+      foto: funcionario.foto,
       idCargo: funcionario.cargo.idCargo
     }
     return this.http.post<Funcionario>(`${API_CONFIG.baseUrl}/funcionarios`, data).pipe(
       catchError(error => {
         alert("Erro ao criar novo funcionário.");
         console.error(error);
+        console.log(data)
         return EMPTY;
       })
     );
+  }
+
+  public delete(id: number): Observable<Funcionario>{
+    return this.http.delete<Funcionario>(`${API_CONFIG.baseUrl}/funcionarios/${id}`).pipe(
+      catchError(error => {
+        alert("Não foi possível deletar funcionário.")
+        console.error(error)
+        return EMPTY
+      })
+    )
   }
 }
