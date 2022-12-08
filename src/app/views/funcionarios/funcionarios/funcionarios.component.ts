@@ -1,3 +1,4 @@
+import { FuncionarioService } from './../../../services/funcionario.service';
 import { Component, OnInit } from '@angular/core';
 import { Funcionario } from 'src/app/models/funcionario';
 
@@ -8,12 +9,19 @@ import { Funcionario } from 'src/app/models/funcionario';
 })
 export class FuncionariosComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'nome', 'cpf', 'email', 'telefone', 'foto', 'cargo', 'editar', 'excluir'];
+  displayedColumns: string[] = ['id', 'nome', 'cpf', 'email', 'foto', 'cargo', 'editar', 'excluir'];
   dataSource: Funcionario[] = [];
 
-  constructor() { }
+  constructor(private funcionarioService: FuncionarioService) { }
 
   ngOnInit(): void {
+    this.initializeTable()
+  }
+
+  public initializeTable(){
+    this.funcionarioService.findAll().subscribe(resposta => {
+      this.dataSource = resposta
+    })
   }
 
   public delete(id: number): void{
