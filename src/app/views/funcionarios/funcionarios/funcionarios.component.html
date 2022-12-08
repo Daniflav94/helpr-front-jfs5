@@ -36,7 +36,9 @@
 
             <ng-container matColumnDef="foto">
                 <th mat-header-cell *matHeaderCellDef> Foto </th>
-                <td mat-cell *matCellDef="let funcionario"> {{funcionario.foto}} </td>
+                <td mat-cell *matCellDef="let funcionario"> 
+                    <img src="{{funcionario.foto}}" alt="">
+                </td>
             </ng-container>
 
             <ng-container matColumnDef="editar">
