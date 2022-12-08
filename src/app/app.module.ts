@@ -23,7 +23,7 @@ export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
 
 @NgModule({
   declarations: [
-    AppComponent 
+    AppComponent
   ],
   imports: [
     BrowserModule,

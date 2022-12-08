@@ -26,3 +26,29 @@ mat-nav-list a i {
     width: 150px;
     height: 150px;
 }
+
+.divPerfil{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.divPerfil img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+}
+
+mat-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.iconDarkLight {
+    width: 30px;
+}
+.iconTema {
+    width: 5vh;
+}
