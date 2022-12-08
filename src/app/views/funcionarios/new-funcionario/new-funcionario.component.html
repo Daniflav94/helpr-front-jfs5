@@ -1,7 +1,7 @@
 <app-nav-bar>
     <ng-container>
-        <h2>Cadastrar Cliente</h2>
-        <form [formGroup]="formCliente">
+        <h2>Cadastrar Funcionário</h2>
+        <form [formGroup]="formFuncionario">
             <mat-form-field class="full-width" appearance="fill">
                 <mat-label>Nome</mat-label>
                 <input type="text" name="nome" matInput placeholder="Ex. Gabriel Braga" formControlName="nome">
@@ -11,16 +11,24 @@
                 <input type="text" name="cpf" matInput placeholder="Ex. 000.000.000-00" formControlName="cpf" mask="000.000.000-00">
             </mat-form-field>
             <mat-form-field class="full-width" appearance="fill">
+                <mat-label>Senha</mat-label>
+                <input type="password" name="senha" matInput  formControlName="senha">
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="fill">
                 <mat-label>E-mail</mat-label>
                 <input type="email" name="email" matInput placeholder="Ex. gabriel@mail.com" formControlName="email">
             </mat-form-field>
             <mat-form-field class="full-width" appearance="fill">
-                <mat-label>Telefone</mat-label>
-                <input type="text" name="telefone" matInput formControlName="telefone" prefix="+55" mask="(000)00000-0000">
+                <mat-label>Cargo</mat-label>
+                <mat-select required formControlName="cargo">
+                    <mat-option *ngFor="let cargo of cargos" [value]="cargo">
+                        {{cargo.nome}}
+                    </mat-option>
+                </mat-select>
             </mat-form-field>
             <mat-form-field class="full-width" appearance="fill">
-                <mat-label>Senha</mat-label>
-                <input type="password" name="senha" matInput formControlName="senha">
+                <mat-label>Foto</mat-label>
+                <input type="url" name="foto" matInput placeholder="Url foto" formControlName="foto">
             </mat-form-field>
 
             <button type="submit" mat-raised-button color="primary" (click)="create()">Cadastrar</button>
@@ -28,3 +36,4 @@
         </form>
     </ng-container>
 </app-nav-bar>
+
