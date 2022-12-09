@@ -1,3 +1,4 @@
+import { EditFuncionarioComponent } from './edit-funcionario/edit-funcionario.component';
 import { NewFuncionarioComponent } from './new-funcionario/new-funcionario.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -11,6 +12,10 @@ const routes: Routes = [
   {
     path: 'new',
     component: NewFuncionarioComponent 
+  },
+  {
+    path: 'edit/:id',
+    component: EditFuncionarioComponent
   }
 ];
 
