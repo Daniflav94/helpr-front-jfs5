@@ -9,3 +9,11 @@
 table {
     width: 100%;
 }
+
+.foto-funcionario{
+    width: 95px;
+    height: 95px;
+    border-radius: 100%;
+    object-fit: cover;
+    object-position: top;
+}

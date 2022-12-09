@@ -11,3 +11,29 @@ form button {
 .margin {
     margin-right: 15px;
 }
+
+.foto{
+    display: flex;
+    width: 100%;
+    padding-left: 12px;
+    align-items: center;
+}
+
+.foto img{
+    object-fit: cover;
+    object-position: center;
+    width: 100px;
+    height: 120px;
+
+}
+
+.upload{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+
+.foto label{
+    margin-bottom: 10px;
+    color: rgb(109, 109, 109);
+}
