@@ -20,16 +20,17 @@
             </mat-form-field>
             <mat-form-field class="full-width" appearance="fill">
                 <mat-label>Cargo</mat-label>
-                <mat-select required formControlName="cargo">
+                <mat-select formControlName="cargo">
                     <mat-option *ngFor="let cargo of cargos" [value]="cargo">
                         {{cargo.nome}}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
-            <mat-form-field class="full-width" appearance="fill">
-                <mat-label>Foto</mat-label>
-                <input type="url" name="foto" matInput placeholder="Url foto" formControlName="foto">
-            </mat-form-field>
+            <div class="foto">
+                <label>Foto</label>
+                <input type="file" name="foto" (change)="uploadFile($event)">
+                <mat-progress-bar  mode="indeterminate" class="barra-progresso" *ngIf="isLoading"></mat-progress-bar>
+            </div>
 
             <button type="submit" mat-raised-button color="primary" (click)="create()">Cadastrar</button>
             <a type="button" mat-raised-button color="warn" routerLink="/funcionarios">Cancelar</a>
