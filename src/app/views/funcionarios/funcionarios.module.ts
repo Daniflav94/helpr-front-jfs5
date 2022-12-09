@@ -7,8 +7,9 @@ import { CommonModule } from '@angular/common';
 
 import { FuncionariosRoutingModule } from './funcionarios-routing.module';
 import { FuncionariosComponent } from './funcionarios/funcionarios.component';
-import { NgxMaskModule } from 'ngx-mask';
+
 import { NewFuncionarioComponent } from './new-funcionario/new-funcionario.component';
+import { NgxMaskModule } from 'ngx-mask';
 
 
 @NgModule({
