@@ -11,9 +11,10 @@ table {
 }
 
 .foto-funcionario{
-    width: 95px;
-    height: 95px;
+    width: 55px;
+    height: 55px;
     border-radius: 100%;
     object-fit: cover;
     object-position: top;
+    margin: 5px 0;
 }
