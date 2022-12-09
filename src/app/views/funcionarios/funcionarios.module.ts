@@ -9,12 +9,14 @@ import { FuncionariosRoutingModule } from './funcionarios-routing.module';
 import { FuncionariosComponent } from './funcionarios/funcionarios.component';
 import { NgxMaskModule } from 'ngx-mask';
 import { NewFuncionarioComponent } from './new-funcionario/new-funcionario.component';
+import { EditFuncionarioComponent } from './edit-funcionario/edit-funcionario.component';
 
 
 @NgModule({
   declarations: [
     FuncionariosComponent,
-    NewFuncionarioComponent
+    NewFuncionarioComponent,
+    EditFuncionarioComponent
   ],
   imports: [
     CommonModule,
