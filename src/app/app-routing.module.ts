@@ -27,7 +27,12 @@ const routes: Routes = [
   },
   { 
     path: 'funcionarios', 
-    loadChildren: () => import('./views/funcionarios/funcionarios.module').then(m => m.FuncionariosModule) }
+    loadChildren: () => import('./views/funcionarios/funcionarios.module').then(m => m.FuncionariosModule) 
+  },
+
+  { 
+    path: 'cargos', loadChildren: () => import('./views/cargos/cargos.module').then(m => m.CargosModule)
+ }
 ];
 
 @NgModule({

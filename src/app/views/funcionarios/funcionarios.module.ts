@@ -7,8 +7,9 @@ import { CommonModule } from '@angular/common';
 
 import { FuncionariosRoutingModule } from './funcionarios-routing.module';
 import { FuncionariosComponent } from './funcionarios/funcionarios.component';
-import { NgxMaskModule } from 'ngx-mask';
+
 import { NewFuncionarioComponent } from './new-funcionario/new-funcionario.component';
+import { NgxMaskModule } from 'ngx-mask';
 import { EditFuncionarioComponent } from './edit-funcionario/edit-funcionario.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
