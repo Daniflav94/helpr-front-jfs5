@@ -15,8 +15,22 @@ form button {
 .foto{
     display: flex;
     width: 100%;
-    flex-direction: column;
     padding-left: 12px;
+    align-items: center;
+}
+
+.foto img{
+    object-fit: cover;
+    object-position: center;
+    width: 100px;
+    height: 120px;
+
+}
+
+.upload{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
 }
 
 .foto label{

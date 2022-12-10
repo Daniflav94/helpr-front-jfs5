@@ -9,8 +9,9 @@ import { Funcionario } from 'src/app/models/funcionario';
 })
 export class FuncionariosComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'nome', 'cpf', 'email', 'foto', 'cargo', 'editar', 'excluir'];
+  displayedColumns: string[] = ['foto', 'nome', 'cpf', 'email', 'cargo', 'editar', 'excluir'];
   dataSource: Funcionario[] = [];
+  isLoading: boolean = false
 
   constructor(private funcionarioService: FuncionarioService) { }
 
@@ -19,13 +20,21 @@ export class FuncionariosComponent implements OnInit {
   }
 
   public initializeTable(){
+    this.isLoading = true
     this.funcionarioService.findAll().subscribe(resposta => {
       this.dataSource = resposta
+      this.isLoading = false
     })
   }
 
-  public delete(id: number): void{
-
+  public delete(id: number, foto: string): void{
+    let ok = confirm("Tem certeza que deseja excluir?");
+    if(ok) {
+      this.funcionarioService.delete(id, foto).subscribe(resposta  => {
+        alert("Funcionário excluído.")
+        this.initializeTable()
+      })
+    }
   }
 
 }

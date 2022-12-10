@@ -15,7 +15,9 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
 // import { AppBootstrapModule } from './app-bootstrap/app-bootstrap.module';
 
-
+import { environment } from 'src/environments/environment';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 
 export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
@@ -23,7 +25,7 @@ export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
 
 @NgModule({
   declarations: [
-    AppComponent 
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -31,6 +33,8 @@ export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
     BrowserAnimationsModule,
     HttpClientModule,
     JwtModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule,
 
     CommonModule,
     BsDropdownModule.forRoot(),
