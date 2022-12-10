@@ -10,6 +10,9 @@ import { FuncionariosComponent } from './funcionarios/funcionarios.component';
 import { NgxMaskModule } from 'ngx-mask';
 import { NewFuncionarioComponent } from './new-funcionario/new-funcionario.component';
 import { EditFuncionarioComponent } from './edit-funcionario/edit-funcionario.component';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { environment } from 'src/environments/environment';
 
 
 @NgModule({
@@ -26,7 +29,9 @@ import { EditFuncionarioComponent } from './edit-funcionario/edit-funcionario.co
     ReactiveFormsModule,
     FormsModule,
     MaskModule,
-    NgxMaskModule.forChild()
+    NgxMaskModule.forChild(),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule,
   ]
 })
 export class FuncionariosModule { }

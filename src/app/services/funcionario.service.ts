@@ -4,6 +4,8 @@ import { Observable, EMPTY } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Funcionario } from '../models/funcionario';
+import { getStorage, ref, deleteObject } from "firebase/storage";
+
 
 @Injectable({
   providedIn: 'root'
@@ -70,7 +72,13 @@ export class FuncionarioService {
     );
   }
 
-  public delete(id: number): Observable<Funcionario>{
+  public delete(id: number, foto: string): Observable<Funcionario>{
+    const storage = getStorage();
+    const fotoFuncionario = ref(storage, foto)
+    deleteObject(fotoFuncionario).catch((error) => {
+      console.log(error)    
+    })
+    
     return this.http.delete<Funcionario>(`${API_CONFIG.baseUrl}/funcionarios/${id}`).pipe(
       catchError(error => {
         alert("Não foi possível deletar funcionário.")

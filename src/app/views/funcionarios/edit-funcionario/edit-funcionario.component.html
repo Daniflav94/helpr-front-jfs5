@@ -27,7 +27,7 @@
                 </mat-select>
             </mat-form-field>
             <div class="foto">
-                <img [src]="funcionario.foto">
+                <img [src]="funcionario.foto || 'assets/img/usuario.png'">
                 <div class="upload">
                     <label>Foto</label>
                     <input type="file" name="foto" (change)="uploadFile($event)">
