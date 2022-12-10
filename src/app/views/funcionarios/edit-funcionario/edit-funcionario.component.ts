@@ -4,6 +4,8 @@ import { NgForm } from '@angular/forms';
 import { FuncionarioService } from 'src/app/services/funcionario.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UploadService } from 'src/app/services/upload.service';
+import { Cargo } from 'src/app/models/cargo';
+import { CargoService } from 'src/app/services/cargo.service';
 
 @Component({
   selector: 'app-edit-funcionario',
@@ -14,26 +16,8 @@ export class EditFuncionarioComponent implements OnInit {
 
   isLoading: Boolean = false
 
-  //public cargos: Cargo[] = []
-  public cargos: any = [{  
-    idCargo: 1,
-    nome: "Diretor Geral",
-    descricao: "Gerencia a empresa",
-    salario: 30000.0
-  },
-  {
-    idCargo: 2,
-    nome: "Diretor de Setor",
-    descricao: "Gerencia um setor da empresa",
-    salario: 18000.0
-  },
-  {
-    idCargo: 4,
-    nome: "Desenvolvedor Full-Stack jr",
-    descricao: "Faz de tudo",
-    salario: 4000.0
-  } 
-]
+  public cargos: Cargo[] = []
+  
 
   public cargoEmpty: any = {
     idCargo: NaN,
@@ -56,13 +40,13 @@ export class EditFuncionarioComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private uploadService: UploadService,
-    //private cargoService: CargoService
+    private cargoService: CargoService
     ) { }
 
   ngOnInit(): void {
 
     this.initializeFuncionario()
-    //this.initializeCargos()
+    this.initializeCargos()
   }
 
   public initializeFuncionario(): void{
@@ -75,10 +59,9 @@ export class EditFuncionarioComponent implements OnInit {
   }
 
    public initializeCargos(): void{
-   // this.cargoService.findAll().subscribe(cargos => {
-   //   this.cargos = cargos
-   // })
-   
+   this.cargoService.findAll().subscribe(cargos => {
+      this.cargos = cargos
+   })   
   } 
 
   public update(form: NgForm): void{

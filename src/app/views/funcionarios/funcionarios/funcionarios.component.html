@@ -6,9 +6,9 @@
                 <i class="material-icons">add</i>
             </a>
         </div>
-        <mat-spinner class="spinner" style="margin:0 auto" [diameter]="60" *ngIf="isLoading" ></mat-spinner>
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
+        <mat-spinner class="spinner" style="margin:0 auto" [diameter]="60" *ngIf="isLoading"></mat-spinner>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="isLoading == false">
+   
             <ng-container matColumnDef="nome">
                 <th mat-header-cell *matHeaderCellDef> Nome </th>
                 <td mat-cell *matCellDef="let funcionario"> {{funcionario.nome}} </td>

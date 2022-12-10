@@ -11,6 +11,7 @@ export class CargosComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'nome', 'descricao', 'salario'];
   dataSource: Cargo[] = [];
+  isLoading: Boolean = false
 
   constructor(private cargoService: CargoService) { }
 
@@ -18,8 +19,10 @@ export class CargosComponent implements OnInit {
     this.initializeTable();
   }
  private initializeTable(): void{
+  this.isLoading = true
   this.cargoService.findAll().subscribe(cargos =>{
       this.dataSource = cargos;
+      this.isLoading = false
   });
   }
  }

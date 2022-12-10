@@ -4,6 +4,8 @@ import { FuncionarioService } from './../../../services/funcionario.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { UploadService } from 'src/app/services/upload.service';
+import { CargoService } from 'src/app/services/cargo.service';
+import { Cargo } from 'src/app/models/cargo';
 
 @Component({
   selector: 'app-new-funcionario',
@@ -16,33 +18,13 @@ export class NewFuncionarioComponent implements OnInit {
   isLoading: Boolean = false
   foto: string = ''
 
-  // dados teste, após implementar Cargos alterar para linha abaixo
-  // public cargos: Cargo[] = []
-  public cargos: any = [{  
-    idCargo: 1,
-    nome: "Diretor Geral",
-    descricao: "Gerencia a empresa",
-    salario: 30000.0
-  },
-  {
-    idCargo: 2,
-    nome: "Diretor de Setor",
-    descricao: "Gerencia um setor da empresa",
-    salario: 18000.0
-  },
-  {
-    idCargo: 4,
-    nome: "Desenvolvedor Full-Stack jr",
-    descricao: "Faz de tudo",
-    salario: 4000.0
-  } 
-]
-
+  public cargos: Cargo[] = []
+ 
   constructor(fb: FormBuilder,
     private funcionarioService: FuncionarioService,
     private router: Router,
     private uploadService: UploadService,
-    //private cargoService: CargoService
+    private cargoService: CargoService
     ) {
     this.formFuncionario = fb.group({
       nome: ["", [Validators.required]],
@@ -54,16 +36,15 @@ export class NewFuncionarioComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    //this.initializeFieldCargos()
+    this.initializeFieldCargos()
   }
 
-  // Após implementar service e métodos de Cargo descomentar método abaixo
 
-  /* private initializeFieldCargos(): void {
+  public initializeFieldCargos(): void {
     this.cargoService.findAll().subscribe(cargos => {
       this.cargos = cargos;
     });
-  } */
+  } 
 
   public create(): void{
     if(this.formFuncionario.valid){

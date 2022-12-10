@@ -1,3 +1,5 @@
+import { Cargo } from "./cargo";
+
 export interface Funcionario {
     id?: number;
     nome: string;
@@ -6,5 +8,5 @@ export interface Funcionario {
     perfil?: string;
     senha?: string;
     foto?: string;
-    cargo: any; // precisa criar interface de cargo
+    cargo: Cargo;
 }
