@@ -9,3 +9,48 @@
 table {
     width: 100%;
 }
+
+.recebido{
+    background-color: rgb(194, 170, 31);
+    background-image: url(/assets/icons/seta-para-baixo.png);
+    background-repeat: no-repeat;
+    background-size: 17px;
+    background-position: 12px 4px;
+    color: aliceblue;
+    font-size: 10px;
+    font-weight: bold;
+    text-align: end;
+    padding: 3px 15px 3px 0;
+    border-radius: 15px;
+    width: 105px;
+}
+
+.atribuido{
+    background-color: rgb(35, 132, 171);
+    background-image: url(/assets/icons/adicionar-contato.png);
+    background-repeat: no-repeat;
+    background-size: 14px;
+    background-position: 12px 6px;
+    color: aliceblue;
+    font-size: 10px;
+    font-weight: bold;
+    text-align: end;
+    padding: 3px 15px 3px 0;
+    border-radius: 15px;
+    width: 105px;
+}
+
+.concluido{
+    background-color: rgb(10, 163, 74);
+    background-image: url(/assets/icons/check-mark.png);
+    background-repeat: no-repeat;
+    background-size: 14px;
+    background-position: 10px 6px;
+    color: aliceblue;
+    font-size: 10px;
+    font-weight: bold;
+    text-align: end;
+    padding: 3px 13px 3px 0;
+    border-radius: 15px;
+    width: 105px;
+}
