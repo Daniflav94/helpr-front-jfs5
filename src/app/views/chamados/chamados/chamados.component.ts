@@ -1,11 +1,8 @@
 import { ChamadoService } from './../../../services/chamado.service';
 import { Chamado } from './../../../models/chamado';
-import { Component, OnInit } from '@angular/core';
-import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
-import { ThemePalette } from '@angular/material/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { Cliente } from 'src/app/models/cliente';
-import { ClienteService } from 'src/app/services/cliente.service';
+import { MatPaginator } from '@angular/material/paginator';
 
 
 @Component({
@@ -14,20 +11,32 @@ import { ClienteService } from 'src/app/services/cliente.service';
   styleUrls: ['./chamados.component.css']
 })
 export class ChamadosComponent implements OnInit {
+  ngOnInit(): void {
+    this.initializeTable();
+    this.paginacao();
+  }
 
   isLoading: boolean = false
 
   displayedColumns: string[] = ['id', 'titulo', 'cliente', 'funcionario', 'dataAbertura', 'status', 'editar', 'detalhes'];
-  dataSource!: MatTableDataSource <Chamado>;
-  private chamadosList: Chamado[] = []
+  chamadosList: Chamado[] = []
+  dataSource!: MatTableDataSource <Chamado>
   valueStatus: string = ""
 
 
   constructor(private chamadoService: ChamadoService) { }
 
-  ngOnInit(): void {
-    this.initializeTable();
-  }
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+
+ private paginacao(): void {
+  this.chamadoService.findAll().subscribe(resposta =>{
+      this.chamadosList = resposta;
+      if (this.paginator){
+        this.dataSource.paginator = this.paginator
+      }
+  });
+ }
 
   private initializeTable(): void {
     this.isLoading = true
