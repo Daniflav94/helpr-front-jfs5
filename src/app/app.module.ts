@@ -20,6 +20,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 
+
 export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
 
 

@@ -6,75 +6,87 @@
                 <i class="material-icons">add</i>
             </a>
         </div>
-            <mat-spinner class="spinner" style="margin:0 auto" [diameter]="60" *ngIf="isLoading" ></mat-spinner>
-            
-            <div class="filtros">
-                <mat-form-field *ngIf="isLoading == false" class="filtro">
-                    <mat-label>Filtro</mat-label>
+        <mat-spinner class="spinner" style="margin:0 auto" [diameter]="60" *ngIf="isLoading"></mat-spinner>
+
+        <div class="filtros" *ngIf="isLoading == false">
+            <div>
+                <mat-form-field  class="filtro">
+                    <mat-label>Filtrar por Id, Título ou Data</mat-label>
                     <input matInput (keyup)="applyFilter($event)">
-                  </mat-form-field>
-                  <mat-form-field *ngIf="isLoading == false" class="filtro">
-                    <mat-label>Filtro cliente</mat-label>
+                </mat-form-field>
+                <mat-form-field *ngIf="isLoading == false" class="filtro">
+                    <mat-label>Filtrar por Cliente</mat-label>
                     <input matInput (keyup)="applyFilterCliente(inputCliente.value)" #inputCliente>
-                  </mat-form-field>
-                  <mat-form-field *ngIf="isLoading == false" class="filtro">
-                    <mat-label>Filtro funcionário</mat-label>
+                </mat-form-field>
+                <mat-form-field *ngIf="isLoading == false" class="filtro">
+                    <mat-label>Filtrar por Funcionário</mat-label>
                     <input matInput (keyup)="applyFilterFuncionario(inputFuncionario.value)" #inputFuncionario>
-                  </mat-form-field>
+                </mat-form-field>
+    
             </div>
-           
-            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="isLoading == false" > 
-                <ng-container matColumnDef="id">
-                    <th mat-header-cell *matHeaderCellDef> Id </th>
-                    <td mat-cell *matCellDef="let chamado"> {{chamado.idChamado }} </td>
-                </ng-container>
+            
+            <mat-radio-group color="primary" [(ngModel)]="valueStatus" (change)="applyFilterStatus(valueStatus)" class="radio-status">
+                <mat-label>Filtrar por Status:</mat-label>
+                <mat-radio-button value="recebido">Recebido</mat-radio-button>
+                <mat-radio-button value="atribuido">Atribuído</mat-radio-button>
+                <mat-radio-button value="concluido">Concluído</mat-radio-button>
+                <button class="button-filtro" (click)="limparFiltro()"> Limpar filtro</button>
+            </mat-radio-group>
+        </div>
 
-                <ng-container matColumnDef="titulo">
-                    <th mat-header-cell *matHeaderCellDef> titulo </th>
-                    <td mat-cell *matCellDef="let chamado"> {{chamado.titulo}} </td>
-                </ng-container>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="isLoading == false">
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> Id </th>
+                <td mat-cell *matCellDef="let chamado"> {{chamado.idChamado }} </td>
+            </ng-container>
 
-                <ng-container matColumnDef="cliente">
-                    <th mat-header-cell *matHeaderCellDef> Cliente </th>
-                    <td mat-cell *matCellDef="let chamado"> {{chamado.cliente.nome}} </td>
-                </ng-container>
+            <ng-container matColumnDef="titulo">
+                <th mat-header-cell *matHeaderCellDef> titulo </th>
+                <td mat-cell *matCellDef="let chamado"> {{chamado.titulo}} </td>
+            </ng-container>
 
-                <ng-container matColumnDef="funcionario">
-                    <th mat-header-cell *matHeaderCellDef> Funcionário </th>
-                    <td mat-cell *matCellDef="let chamado"> {{chamado.funcionario?.nome}} </td>
-                </ng-container>
+            <ng-container matColumnDef="cliente">
+                <th mat-header-cell *matHeaderCellDef> Cliente </th>
+                <td mat-cell *matCellDef="let chamado"> {{chamado.cliente.nome}} </td>
+            </ng-container>
 
-                <ng-container matColumnDef="dataAbertura">
-                    <th mat-header-cell *matHeaderCellDef> Data de Abertura </th>
-                    <td mat-cell *matCellDef="let chamado"> {{chamado.dataAbertura}} </td>
-                </ng-container>
+            <ng-container matColumnDef="funcionario">
+                <th mat-header-cell *matHeaderCellDef> Funcionário </th>
+                <td mat-cell *matCellDef="let chamado"> {{chamado.funcionario?.nome}} </td>
+            </ng-container>
 
-                <ng-container matColumnDef="status">
-                    <th mat-header-cell *matHeaderCellDef> Status </th>
-                    <td mat-cell *matCellDef="let chamado"> 
-                        <div  [ngClass]="{'recebido': chamado.status == 'RECEBIDO', 'atribuido': chamado.status == 'ATRIBUIDO', 'concluido': chamado.status == 'CONCLUIDO'}">
-                            {{ chamado.status }} 
-                        </div>
-                    </td>
-                </ng-container>
+            <ng-container matColumnDef="dataAbertura">
+                <th mat-header-cell *matHeaderCellDef> Data de Abertura </th>
+                <td mat-cell *matCellDef="let chamado"> {{chamado.dataAbertura}} </td>
+            </ng-container>
 
-                <ng-container matColumnDef="editar">
-                    <th mat-header-cell *matHeaderCellDef> Editar </th>
-                    <td mat-cell *matCellDef="let chamado">
-                        <button mat-icon-button [routerLink]="['edit', chamado.idChamado]">
-                            <i class="material-icons">edit</i>
-                        </button>
-                    </td>
-                </ng-container>
+            <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef> Status </th>
+                <td mat-cell *matCellDef="let chamado">
+                    <div
+                        [ngClass]="{'recebido': chamado.status == 'RECEBIDO', 'atribuido': chamado.status == 'ATRIBUIDO', 'concluido': chamado.status == 'CONCLUIDO'}">
+                        {{ chamado.status }}
+                    </div>
+                </td>
+            </ng-container>
 
-                <ng-container matColumnDef="detalhes">
-                    <th mat-header-cell *matHeaderCellDef> Detalhes </th>
-                    <td mat-cell *matCellDef="let chamado">
-                        <button mat-icon-button>
-                            <i class="material-icons">more_horiz</i>
-                        </button>
-                    </td>
-                </ng-container>
+            <ng-container matColumnDef="editar">
+                <th mat-header-cell *matHeaderCellDef> Editar </th>
+                <td mat-cell *matCellDef="let chamado">
+                    <button mat-icon-button [routerLink]="['edit', chamado.idChamado]">
+                        <i class="material-icons">edit</i>
+                    </button>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="detalhes">
+                <th mat-header-cell *matHeaderCellDef> Detalhes </th>
+                <td mat-cell *matCellDef="let chamado">
+                    <button mat-icon-button>
+                        <i class="material-icons">more_horiz</i>
+                    </button>
+                </td>
+            </ng-container>
 
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

@@ -75,6 +75,7 @@ import { MatTooltipModule } from '@angular/material/tooltip'
     MatToolbarModule,
     MatTreeModule,
     MatTooltipModule
+
   ]
 })
 export class MaterialModule {

@@ -21,7 +21,8 @@ export class ChamadosComponent implements OnInit {
   displayedColumns: string[] = ['id', 'titulo', 'cliente', 'funcionario', 'dataAbertura', 'status', 'editar', 'detalhes'];
   chamadosList: Chamado[] = []
   dataSource!: MatTableDataSource <Chamado>
-  
+  valueStatus: string = ""
+
 
   constructor(private chamadoService: ChamadoService) { }
 
@@ -82,6 +83,14 @@ export class ChamadosComponent implements OnInit {
       return true
       }
     }
+  }
+
+  applyFilterStatus(filter: string){
+    this.dataSource.filter = filter.trim().toLowerCase();
+  }
+
+  limparFiltro(){
+    this.dataSource.filter = ''
   }
 }
 
