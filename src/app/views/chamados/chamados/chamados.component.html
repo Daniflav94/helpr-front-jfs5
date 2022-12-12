@@ -60,15 +60,14 @@
                 <td mat-cell *matCellDef="let chamado"> {{chamado.dataAbertura}} </td>
             </ng-container>
 
-            <ng-container matColumnDef="status">
-                <th mat-header-cell *matHeaderCellDef> Status </th>
-                <td mat-cell *matCellDef="let chamado">
-                    <div
-                        [ngClass]="{'recebido': chamado.status == 'RECEBIDO', 'atribuido': chamado.status == 'ATRIBUIDO', 'concluido': chamado.status == 'CONCLUIDO'}">
-                        {{ chamado.status }}
-                    </div>
-                </td>
-            </ng-container>
+                <ng-container matColumnDef="status">
+                    <th mat-header-cell *matHeaderCellDef> Status </th>
+                    <td mat-cell *matCellDef="let chamado"> 
+                        <div  [ngClass]="{'recebido': chamado.status == 'RECEBIDO', 'atribuido': chamado.status == 'ATRIBUIDO', 'concluido': chamado.status == 'CONCLUIDO', 'arquivado':chamado.status == 'ARQUIVADO'}">
+                            {{ chamado.status }} 
+                        </div>
+                    </td>
+                </ng-container>
 
             <ng-container matColumnDef="editar">
                 <th mat-header-cell *matHeaderCellDef> Editar </th>

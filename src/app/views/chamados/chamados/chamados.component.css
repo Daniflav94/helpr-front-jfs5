@@ -113,3 +113,18 @@ table {
     border-radius: 15px;
     width: 105px;
 }
+
+.arquivado{
+    background-color: rgb(126, 125, 125);
+    background-image: url(/assets/icons/abrir-contorno-da-pasta.png);
+    background-repeat: no-repeat;
+    background-size: 15px;
+    background-position: 12px 4px;
+    color: aliceblue;
+    font-size: 10px;
+    font-weight: bold;
+    text-align: end;
+    padding: 3px 12px 3px 0;
+    border-radius: 15px;
+    width: 105px;
+}
