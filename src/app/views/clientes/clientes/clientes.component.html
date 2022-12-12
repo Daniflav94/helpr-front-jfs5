@@ -7,6 +7,10 @@
             </a>
         </div>
         <mat-spinner class="spinner" style="margin:0 auto" [diameter]="60" *ngIf="isLoading" ></mat-spinner>
+        <mat-form-field  class="filtro" *ngIf="isLoading == false">
+            <mat-label>Filtrar</mat-label>
+            <input matInput (keyup)="applyFilter($event)">
+        </mat-form-field>
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="isLoading == false">      
             <ng-container matColumnDef="id">
                 <th mat-header-cell *matHeaderCellDef> Id </th>
@@ -54,5 +58,8 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
+        <mat-paginator #paginator [pageSizeOptions]="[5, 10, 20]"
+        showFirstLastButtons *ngIf="isLoading == false">
+</mat-paginator>
     </ng-container>
 </app-nav-bar>

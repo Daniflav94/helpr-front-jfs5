@@ -1,6 +1,8 @@
 import { FuncionarioService } from './../../../services/funcionario.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Funcionario } from 'src/app/models/funcionario';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-funcionarios',
@@ -10,10 +12,13 @@ import { Funcionario } from 'src/app/models/funcionario';
 export class FuncionariosComponent implements OnInit {
 
   displayedColumns: string[] = ['foto', 'nome', 'cpf', 'email', 'cargo', 'editar', 'excluir'];
-  dataSource: Funcionario[] = [];
+  funcionarioData: Funcionario[] = [];
+  dataSource = new MatTableDataSource<Funcionario>(this.funcionarioData);
   isLoading: boolean = false
 
   constructor(private funcionarioService: FuncionarioService) { }
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngOnInit(): void {
     this.initializeTable()
@@ -22,8 +27,12 @@ export class FuncionariosComponent implements OnInit {
   public initializeTable(){
     this.isLoading = true
     this.funcionarioService.findAll().subscribe(resposta => {
-      this.dataSource = resposta
+      this.funcionarioData = resposta
+      this.dataSource = new MatTableDataSource(this.funcionarioData)
       this.isLoading = false
+      if (this.paginator){
+        this.dataSource.paginator = this.paginator
+      }
     })
   }
 
@@ -34,6 +43,26 @@ export class FuncionariosComponent implements OnInit {
         alert("Funcionário excluído.")
         this.initializeTable()
       })
+    }
+  }
+
+  applyFilter(event: Event) {
+    this.dataSource = new MatTableDataSource(this.funcionarioData)
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  applyFilterCargo(nomeCargo: string){
+    this.initializeFilterCliente()
+    this.dataSource.filter = nomeCargo
+  }
+
+  initializeFilterCliente(){
+    this.dataSource.filterPredicate = (funcionario: Funcionario, filter) => {
+      if(funcionario.cargo.nome.toLowerCase().indexOf(filter.toLowerCase()) == -1){
+        return false
+      }
+      return true
     }
   }
 
