@@ -10,6 +10,16 @@ table {
     width: 100%;
 }
 
+.filtros{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.filtro{
+    width: 300px;
+}
+
 .recebido{
     background-color: rgb(215, 98, 98);
     background-image: url(/assets/icons/seta-para-baixo.png);
