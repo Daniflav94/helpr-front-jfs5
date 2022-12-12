@@ -24,9 +24,16 @@ table {
 }
 
 .button-filtro{
-    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.556);
+    box-shadow: 5px 5px 7px #b6acac, 
+        -5px -5px 7px #faf4f4;
+    box-sizing:  border-box;
     border: none;
     margin-left: 20px;
+}
+
+.button-filtro:active{
+    box-shadow: inset 1px 1px 2px #babecc, 
+    inset -1px -1px 2px #fff;
 }
 
 .radio-status{

@@ -38,6 +38,7 @@ mat-nav-list a i {
     border-radius: 50%;
     width: 150px;
     height: 150px;
+    object-fit: cover;
 }
 
 mat-toolbar {
