@@ -3,7 +3,7 @@
         <mat-nav-list>
             <div class="divPerfil">
                 <img [src]=" usuario.foto || 'assets/img/perfil.jpg' " alt="foto de perfil" width="180px">
-                <h1 class="usuario"> {{ usuario.nome }} </h1>
+                <h2 class="usuario"> {{ usuario.nome }} </h2>
             </div>
             <a mat-list-item routerLink="/home" routerLinkActive="active">
                 <i class="material-icons">home</i>
@@ -30,12 +30,14 @@
                 Logout
             </a>
         </mat-nav-list>
+        <img src="../../../assets/img/quad1.png" width="85px" class="logo">
     </mat-drawer>
     <mat-drawer-content>
         <mat-toolbar color="primary">
             <button type="button" mat-icon-button (click)="drawer.toggle()">
                 <i class="material-icons">menu</i>
             </button>
+            <img src="../../../assets/img/ext3.png" width="120px" routerLink="/home">
             <button class="material-symbols-outlined" mat-icon-button 
             (click)="alterarTema()">
                 <i class="material-icons">{{tema.tipo}}</i>
