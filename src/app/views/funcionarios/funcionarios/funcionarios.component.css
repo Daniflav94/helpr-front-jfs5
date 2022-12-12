@@ -18,3 +18,21 @@ table {
     object-position: top;
     margin: 5px 0;
 }
+
+.filtros{
+    display: flex;
+    flex-direction: column;
+    font-size: 13px;
+}
+
+.filtros div{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.filtro{
+    width: 520px;
+
+}
