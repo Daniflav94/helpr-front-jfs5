@@ -1,5 +1,6 @@
 import { Funcionario } from './funcionario';
 import { Cliente } from './cliente';
+
 export interface Chamado {
     idChamado?: number;
     titulo: string;

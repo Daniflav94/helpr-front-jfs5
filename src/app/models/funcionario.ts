@@ -1,4 +1,5 @@
 import { Cargo } from "./cargo";
+import { Chamado } from "./chamado";
 
 export interface Funcionario {
     id?: number;

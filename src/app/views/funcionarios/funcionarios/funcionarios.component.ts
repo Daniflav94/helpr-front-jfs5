@@ -1,8 +1,10 @@
+import { DialogFuncionariosComponent } from './../../../components/dialogos/dialog-funcionarios/dialog-funcionarios.component';
 import { FuncionarioService } from './../../../services/funcionario.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Funcionario } from 'src/app/models/funcionario';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-funcionarios',
@@ -11,12 +13,13 @@ import { MatPaginator } from '@angular/material/paginator';
 })
 export class FuncionariosComponent implements OnInit {
 
-  displayedColumns: string[] = ['foto', 'nome', 'cpf', 'email', 'cargo', 'editar', 'excluir'];
+  displayedColumns: string[] = ['foto', 'nome', 'cpf', 'email', 'cargo', 'editar', 'excluir', 'detalhe'];
   funcionarioData: Funcionario[] = [];
   dataSource = new MatTableDataSource<Funcionario>(this.funcionarioData);
   isLoading: boolean = false
 
-  constructor(private funcionarioService: FuncionarioService) { }
+  constructor(private funcionarioService: FuncionarioService,
+    public dialog: MatDialog) { }
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -45,6 +48,14 @@ export class FuncionariosComponent implements OnInit {
       })
     }
   }
+
+  public openDialog(funcionario: Funcionario) {
+    this.dialog.open(DialogFuncionariosComponent, {
+      width: "400px", 
+      data: funcionario
+    })
+  }
+
 
   applyFilter(event: Event) {
     this.dataSource = new MatTableDataSource(this.funcionarioData)

@@ -121,6 +121,11 @@ table {
     width: 105px;
 }
 
+  mat-dialog-container {
+        padding: 0;
+        background-color:#fff ;
+    }
+
 .arquivado{
     background-color: rgb(126, 125, 125);
     background-image: url(/assets/icons/abrir-contorno-da-pasta.png);
@@ -135,3 +140,4 @@ table {
     border-radius: 15px;
     width: 105px;
 }
+
