@@ -48,8 +48,6 @@ export class ClientesComponent implements OnInit {
   
   }
 
-  
-
   public delete(id: number): void {
     let ok = confirm("Tem certeza que deseja excluir?");
     if(ok) {
@@ -60,6 +58,7 @@ export class ClientesComponent implements OnInit {
     }
   }
 
+
   public openDialog(cliente: Cliente) {
     this.dialog.open(DialogClientesComponent, {
       width: "400px", 
@@ -67,7 +66,12 @@ export class ClientesComponent implements OnInit {
     })
   }
 
- 
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
 
 }
 

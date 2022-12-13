@@ -39,10 +39,18 @@ export class CargosComponent implements OnInit {
       }
   });
   }
+
   public openDialog(cargo: Cargo) {
     this.dialog.open(DialogCargosComponent, {
       width: "400px", 
       data: cargo
     })
+
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
  }
 }

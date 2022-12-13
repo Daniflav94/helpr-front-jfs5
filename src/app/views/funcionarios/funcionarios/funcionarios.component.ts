@@ -48,10 +48,33 @@ export class FuncionariosComponent implements OnInit {
       })
     }
   }
+
   public openDialog(funcionario: Funcionario) {
     this.dialog.open(DialogFuncionariosComponent, {
       width: "400px", 
       data: funcionario
     })
   }
+
+
+  applyFilter(event: Event) {
+    this.dataSource = new MatTableDataSource(this.funcionarioData)
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  applyFilterCargo(nomeCargo: string){
+    this.initializeFilterCliente()
+    this.dataSource.filter = nomeCargo
+  }
+
+  initializeFilterCliente(){
+    this.dataSource.filterPredicate = (funcionario: Funcionario, filter) => {
+      if(funcionario.cargo.nome.toLowerCase().indexOf(filter.toLowerCase()) == -1){
+        return false
+      }
+      return true
+    }
+  }
+
 }

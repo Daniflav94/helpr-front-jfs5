@@ -95,6 +95,7 @@ export class ChamadosComponent implements OnInit {
 
   limparFiltro(){
     this.dataSource.filter = ''
+    this.valueStatus = ''
   }
 
   public openDialog(dialogo: Chamado) {

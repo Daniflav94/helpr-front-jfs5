@@ -24,9 +24,16 @@ table {
 }
 
 .button-filtro{
-    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.556);
+    box-shadow: 5px 5px 7px #b6acac, 
+        -5px -5px 7px #faf4f4;
+    box-sizing:  border-box;
     border: none;
     margin-left: 20px;
+}
+
+.button-filtro:active{
+    box-shadow: inset 1px 1px 2px #babecc, 
+    inset -1px -1px 2px #fff;
 }
 
 .radio-status{
@@ -118,3 +125,19 @@ table {
         padding: 0;
         background-color:#fff ;
     }
+
+.arquivado{
+    background-color: rgb(126, 125, 125);
+    background-image: url(/assets/icons/abrir-contorno-da-pasta.png);
+    background-repeat: no-repeat;
+    background-size: 15px;
+    background-position: 12px 4px;
+    color: aliceblue;
+    font-size: 10px;
+    font-weight: bold;
+    text-align: end;
+    padding: 3px 12px 3px 0;
+    border-radius: 15px;
+    width: 105px;
+}
+
