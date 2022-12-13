@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Chamado } from './../../../models/chamado';
 import { Cliente } from './../../../models/cliente';
 import { Component, OnInit } from '@angular/core';
+import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-edit-chamado',
@@ -86,13 +87,11 @@ export class EditChamadoComponent implements OnInit {
 
   public update(form: NgForm): void {
     if (form.valid) {
-      this.chamadoService.update(this.chamado).subscribe(chamado => {
-        alert("Chamado editado.");
-        this.router.navigate(["/chamados"])
-        
-      });
-    }
-    else {
+        this.chamadoService.update(this.chamado).subscribe(chamado => {
+          alert("Chamado editado.");
+          this.router.navigate(["/chamados"])        
+        });
+      } else {
       alert("Dados inválidos.");
     }
   }

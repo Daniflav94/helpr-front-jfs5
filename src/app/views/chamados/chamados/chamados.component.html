@@ -32,7 +32,7 @@
                 <mat-radio-button value="concluido">Concluído</mat-radio-button>
                 <mat-radio-button value="arquivado">Arquivado</mat-radio-button>
 
-                <button class="button-filtro" (click)="limparFiltro()"> Limpar filtro</button>
+                <button class="button-filtro" (click)="limparFiltro()"> Limpar filtros</button>
             </mat-radio-group>
         </div>
 
@@ -93,7 +93,7 @@
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
             <mat-paginator #paginator [pageSizeOptions]="[5, 10, 20]"
-        showFirstLastButtons *ngIf="isLoading == false">
+        showFirstLastButtons >
         </mat-paginator>
     </ng-container>
 </app-nav-bar>

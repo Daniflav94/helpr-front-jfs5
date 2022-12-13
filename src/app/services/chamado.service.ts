@@ -57,9 +57,9 @@ export class ChamadoService {
     }
     return this.http.put<Chamado>(`${API_CONFIG.baseUrl}/chamados/${chamado.idChamado}`, data).pipe(
       catchError(error => {
-        alert("Erro ao editar chamado.");
-        console.error(error);
-        return EMPTY;
+          alert("Erro ao editar chamado, verifique se todos os campos estão preenchidos corretamente.");
+          console.error(error);
+          return EMPTY;       
       })
     );
   }

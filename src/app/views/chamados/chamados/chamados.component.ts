@@ -15,14 +15,13 @@ import { MatDialog } from '@angular/material/dialog';
 export class ChamadosComponent implements OnInit {
   ngOnInit(): void {
     this.initializeTable();
-    this.paginacao();
   }
 
   isLoading: boolean = false
 
   displayedColumns: string[] = ['id', 'titulo', 'cliente', 'funcionario', 'dataAbertura', 'status', 'editar', 'detalhes'];
   chamadosList: Chamado[] = []
-  dataSource!: MatTableDataSource <Chamado>
+  dataSource = new MatTableDataSource<Chamado>(this.chamadosList)
   valueStatus: string = ""
 
 
@@ -33,21 +32,15 @@ export class ChamadosComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
 
- private paginacao(): void {
-  this.chamadoService.findAll().subscribe(resposta =>{
-      this.chamadosList = resposta;
-      if (this.paginator){
-        this.dataSource.paginator = this.paginator
-      }
-  });
- }
-
   private initializeTable(): void {
     this.isLoading = true
     this.chamadoService.findAll().subscribe(chamados => {
       this.chamadosList = chamados
-      this.dataSource = new MatTableDataSource(chamados) ;
+      this.dataSource = new MatTableDataSource(this.chamadosList) ;
       this.isLoading = false
+      if (this.paginator){
+        this.dataSource.paginator = this.paginator
+      }
       
     });
   }
@@ -97,6 +90,7 @@ export class ChamadosComponent implements OnInit {
   limparFiltro(){
     this.dataSource.filter = ''
     this.valueStatus = ''
+    this.initializeTable()
   }
 
   public openDialog(dialogo: Chamado) {

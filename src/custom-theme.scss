@@ -18,10 +18,13 @@ $helpr-front-theme-dark: mat.define-dark-theme((
     primary: $helpr-front-primary,
     accent: $helpr-front-accent,
     warn: $helpr-front-warn,
-  )
+  ),
+
+  
 ));
 .theme-dark {
   @include mat.all-component-themes($helpr-front-theme-dark);
+ 
 }
 .theme-light {
   @include mat.all-component-themes($helpr-front-theme);
