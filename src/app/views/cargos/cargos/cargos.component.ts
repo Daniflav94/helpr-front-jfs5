@@ -45,7 +45,7 @@ export class CargosComponent implements OnInit {
       width: "400px", 
       data: cargo
     })
-
+  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -53,4 +53,4 @@ export class CargosComponent implements OnInit {
   }
 
  }
-}
+
