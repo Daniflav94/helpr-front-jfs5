@@ -90,6 +90,7 @@ export class ChamadosComponent implements OnInit {
   }
 
   applyFilterStatus(filter: string){
+    this.dataSource = new MatTableDataSource(this.chamadosList)
     this.dataSource.filter = filter.trim().toLowerCase();
   }
 
