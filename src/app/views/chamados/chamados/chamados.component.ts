@@ -1,8 +1,10 @@
+import { DialogChamadosComponent } from './../../../components/dialogos/dialog-chamados/dialog-chamados.component';
 import { ChamadoService } from './../../../services/chamado.service';
 import { Chamado } from './../../../models/chamado';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
@@ -24,7 +26,9 @@ export class ChamadosComponent implements OnInit {
   valueStatus: string = ""
 
 
-  constructor(private chamadoService: ChamadoService) { }
+  constructor(private chamadoService: ChamadoService,
+    public dialog: MatDialog
+    ) { }
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -92,6 +96,14 @@ export class ChamadosComponent implements OnInit {
   limparFiltro(){
     this.dataSource.filter = ''
   }
+
+  public openDialog(dialogo: Chamado) {
+    this.dialog.open(DialogChamadosComponent, {
+      width: "400px", 
+      data: dialogo
+    })
+  }
+
 }
 
 

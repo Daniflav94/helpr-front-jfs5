@@ -1,3 +1,5 @@
+import { Chamado } from "./chamado";
+
 export interface Cliente {
     id?: number;
     nome: string;
@@ -7,3 +9,4 @@ export interface Cliente {
     perfil?: string;
     senha?: string;
 }
+

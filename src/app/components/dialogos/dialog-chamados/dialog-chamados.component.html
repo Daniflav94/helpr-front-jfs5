@@ -1,0 +1,17 @@
+
+<div class="dialog-container">
+    <button mat-icon-button mat-dialog-close="">
+        <i class="material-icons">close</i>
+    </button>
+    <h3>Detalhes</h3>
+    <span><Strong>ID:</Strong>{{chamado.idChamado}}</span><br>
+    <span><Strong>TÍTULO:</Strong>{{chamado.titulo}}</span><br>
+    <span><Strong>DESCRIÇÃO:</Strong>{{chamado.descricao}}</span><br>
+    <span><Strong>DATA DE ABERTURA:</Strong>{{chamado.dataAbertura}}</span><br>
+    <span><Strong>DATA DE FECHAMENTO:</Strong>{{chamado.dataFechamento || "CHAMADO ABERTO"}}</span><br>
+    <span><Strong>STATUS:</Strong>{{chamado.status}}</span><br>
+    <span><Strong>FUNCIONÁRIO:</Strong>{{chamado.funcionario?.nome || "FUNCIONÁRIO NÃO ATRIBUIDO"}}</span><br>
+    <span><Strong>CLIENTE:</Strong>{{chamado.cliente?.nome}}</span><br>
+
+
+</div>
