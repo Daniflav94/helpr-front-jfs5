@@ -1,15 +1,18 @@
 <div class="login-container">
     <form [formGroup]="formLogin">
-        <h1>Login</h1>
+        <div>
+            <img src="../../../../assets/img/quad1.png" width="100px">
+            <h1>LOGIN</h1>
+        </div>   
         <mat-form-field class="full-width">
             <mat-label>E-mail</mat-label>
-            <input type="email" matInput placeholder="E-mail" formControlName="email">
+            <input type="email" matInput placeholder="E-mail" formControlName="email" appearance="fill">
         </mat-form-field>
         <mat-form-field class="full-width">
             <mat-label>Senha</mat-label>
-            <input type="password" matInput placeholder="Senha" formControlName="senha">
+            <input type="password" matInput placeholder="Senha" formControlName="senha" appearance="fill">
         </mat-form-field>
-        <button type="submit" mat-raised-button color="primary" class="full-width" (click)="signIn()">
+        <button type="submit" mat-raised-button class="full-width btn-login" (click)="signIn()">
             Entrar
         </button>
     </form>

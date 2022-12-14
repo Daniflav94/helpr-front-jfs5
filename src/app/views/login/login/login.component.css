@@ -2,21 +2,57 @@
     width: 100%;
     height: 100%;
     background: #ad8bc2;
-    background: linear-gradient(45deg, rgba(173,139,194,1) 0%, rgba(250,141,235,1) 100%);
-
+    background: linear-gradient(45deg, rgb(179, 152, 194) 0%, rgb(215, 141, 250) 100%);
     display: flex;
     align-items: center;
     justify-content: center;
+
 }
 
 .login-container form {
     width: clamp(300px, 100%, 350px);
     padding: 20px;
     border-radius: 10px;
-    background-color: #FFFFFF;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+form div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+img{
+    margin-right: 30px;
+}
+
+input{
+    border: 1px solid rgba(255, 255, 255, 0.196);
+    border-radius: 5px;
+    height: 30px;
+    padding-left: 5px;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active{
+    transition: background-color 5000s;
+    -webkit-text-fill-color: rgb(0, 0, 0) !important;
+
 }
 
 .login-container form h1 {
     text-align: center;
-    font-size: 30px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.btn-login{
+    background-color: black;
+    color: aliceblue;
 }
